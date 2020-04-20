@@ -36,6 +36,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.2"
+  circular_bottom_navigation:
+    dependency: "direct main"
+    description:
+      name: circular_bottom_navigation
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
   collection:
     dependency: transitive
     description:
@@ -142,6 +149,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.12.6"
+  material_design_icons_flutter:
+    dependency: "direct main"
+    description:
+      name: material_design_icons_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.0.5145"
   meta:
     dependency: transitive
     description:
@@ -287,6 +301,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.0.5"
+  webview_flutter:
+    dependency: "direct main"
+    description:
+      name: webview_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.20"
   xml:
     dependency: transitive
     description:
@@ -303,4 +324,4 @@ packages:
     version: "2.2.0"
 sdks:
   dart: ">=2.5.0 <3.0.0"
-  flutter: ">=1.12.8 <2.0.0"
+  flutter: ">=1.12.13+hotfix.5 <2.0.0"

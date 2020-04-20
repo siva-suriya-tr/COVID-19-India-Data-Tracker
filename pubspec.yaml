@@ -28,6 +28,9 @@ dependencies:
   progress_indicators: ^0.1.5
   intl: ^0.16.1
   flutter_native_splash: ^0.1.9
+  circular_bottom_navigation: ^1.0.1
+  material_design_icons_flutter: 4.0.5145
+  webview_flutter: ^0.3.20
 
 dev_dependencies:
   flutter_test:
@@ -39,7 +42,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -64,10 +66,10 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
 fonts:
-  - family: Roboto
+  - family : MyFlutterApp
     fonts:
-      - asset: fonts/BrilkSans-ExtraBold.ttf
-        weight: 500
+      - asset: fonts/MyFlutterApp.ttf
+
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
@@ -76,4 +78,5 @@ flutter_native_splash:
   color: "000000"
   android_disable_fullscreen: true
   #flutter pub pub run flutter_native_splash:create
+
 
