@@ -1,6 +1,6 @@
-# corona_tracker
+# Covid-19 Stat Tracker
 
-A new Flutter application.
+
 
 ## Getting Started
 
