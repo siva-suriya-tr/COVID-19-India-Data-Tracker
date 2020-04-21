@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'layout.dart';
 import 'twitter.dart';
+import 'dail.dart';
 import 'package:circular_bottom_navigation/tab_item.dart';
 import 'package:circular_bottom_navigation/circular_bottom_navigation.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-
 void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -44,39 +45,51 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     _navigationController = new CircularBottomNavigationController(selectedPos);
   }
+
+  Future<bool> _onWillPop() {
+    return showDialog(
+      context: context,
+      builder: (context) => new AlertDialog(
+        title: new Text('Are you sure?'),
+        content: new Text('Do you want to exit?'),
+        actions: <Widget>[
+          new FlatButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: new Text('No'),
+          ),
+          new FlatButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            child: new Text('Yes'),
+          ),
+        ],
+      ),
+    ) ?? false;
+  }
+
+
   @override
   Widget build(BuildContext context) {
-    MediaQueryData queryData;
-    queryData = MediaQuery.of(context);
-    double width = queryData.size.width;
-    double height = queryData.size.height;
-    return Scaffold(
+    return new WillPopScope(child: Scaffold(
         backgroundColor: Color(int.parse("0xffFFFFFF")),
         appBar: AppBar(
-          title: Row(
-            children: <Widget>[
-              Image.asset(
-                'images/virus.png',
-                fit: BoxFit.contain,
-                height: 32,
-              ),
-              Text("  COVID-19 Tracker and Helpkit",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0,color: Colors.white),),
-            ],
-          )
+            title: Row(
+              children: <Widget>[
+                Image.asset(
+                  'images/virus.png',
+                  fit: BoxFit.contain,
+                  height: 32,
+                ),
+                Text("  COVID-19 Tracker and Helpkit",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0,color: Colors.white),),
+              ],
+            )
         ),
         bottomNavigationBar: bottomNav(),
         body: new RefreshIndicator(
-          child: new ListView(
-            children: <Widget>[
-              Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                        SingleChildScrollView(child: bodyContainer(width,height), ),
-                  ],),
-            ],),
+          child: bodyContainer(),
           onRefresh: handleRefresh,
-        ));
-
+        )
+    ) ,
+        onWillPop: _onWillPop);
   }
   Future<Null> handleRefresh() async
   {
@@ -85,24 +98,19 @@ class _MyHomePageState extends State<MyHomePage> {
       buildLayout();
     });
   }
-  Widget bodyContainer(double width,double height) {
+  Widget bodyContainer() {
     switch (selectedPos) {
       case 0:
-        //return Container(
-          //width: width,
-         //height: height,
-          //child:
-          return buildLayout();
-        //);
-        break;
+      return buildLayout();
+      break;
       case 1:
-        return twitterFeed(width,height);
+        return ViewWidget();
         break;
       case 2:
-        return twitterFeed(width,height);
+        return DialWidget();
         break;
       case 3:
-        return twitterFeed(width,height);
+        return ViewWidget();
         break;
     }
   }

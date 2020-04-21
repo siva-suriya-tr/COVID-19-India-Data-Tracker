@@ -1,29 +1,186 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-Widget twitterFeed(double width,double height)
-{
-  String lol = "https://twitter.com/ICMRDELHI";
-  final Completer<WebViewController> _controller = Completer<WebViewController>();
-  return Container(
-    width: width,
-    height:2300,
+class ViewWidget extends StatefulWidget {
+  @override
+  ViewWidgetState createState() => ViewWidgetState();
+}
+class ViewWidgetState extends State {
 
+  bool viewVisible = false;
+  Color whoColor = Colors.orange;
+  Color mohfwColor = Colors.white;
+  Color icmrColor = Colors.white;
+  Color pibColor = Colors.white;
+  void changeWidget() {
+    setState(() {
+      viewVisible = !viewVisible;
+    });
+  }
+  void who (){
+    _controller.loadUrl("https://twitter.com/WHO");
+    setState(() {
+      whoColor = Colors.orange;
+      mohfwColor = Colors.white;
+      icmrColor = Colors.white;
+      pibColor = Colors.white;
+      viewVisible = !viewVisible;
+    });
+
+  }
+  void mohfw() {
+    _controller.loadUrl("https://twitter.com/MoHFW_INDIA");
+    setState(() {
+      whoColor = Colors.white;
+      mohfwColor = Colors.orange;
+      icmrColor = Colors.white;
+      pibColor = Colors.white;
+      viewVisible = !viewVisible;
+    });
+  }
+  void icmr() {
+    _controller.loadUrl("https://twitter.com/ICMRDELHI");
+    setState(() {
+      whoColor = Colors.white;
+      mohfwColor = Colors.white;
+      icmrColor = Colors.orange;
+      pibColor = Colors.white;
+      viewVisible = !viewVisible;
+    });
+  }
+  void pib(){
+    _controller.loadUrl("https://twitter.com/PIBFactCheck");
+    setState(() {
+      whoColor = Colors.white;
+      mohfwColor = Colors.white;
+      icmrColor = Colors.white;
+      pibColor = Colors.orange;
+      viewVisible = !viewVisible;
+    });
+  }
+
+  WebViewController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    MediaQueryData queryData;
+    queryData = MediaQuery.of(context);
+    double width = queryData.size.width;
+    double height = queryData.size.height;
+
+    //final Completer<WebViewController> _controller = Completer<WebViewController>();
+    //WebViewController _controller;
+    return Container(
+        width: width,
+        height:2300,
         child: Stack(
           children: <Widget>[
             WebView(
-              initialUrl: lol,
+              initialUrl: "https://twitter.com/WHO",
               javascriptMode: JavascriptMode.unrestricted,
               onWebViewCreated: (WebViewController webViewController){
-                _controller.complete(webViewController);
+                //_controller.complete(webViewController);
+                _controller = webViewController;
               },
+              navigationDelegate: (action) {
+                if (action.url == "https://stackoverflow.com/users/login?ssrc=head&returnurl=https%3a%2f%2fstackoverflow.com%2f") {
+                  return NavigationDecision.prevent;
+                }
+                else {
+                  return NavigationDecision.navigate;
+                }
+              },
+              debuggingEnabled: true,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.fromLTRB(0.0, 10.0, 10.0, 10.0),
+                  child: ClipOval(
+                    child: Material(
+                      color: Colors.white, // button color
+                      child: InkWell(
+                        splashColor: Colors.black, // inkwell color
+                        child: Container(
+                          child: SizedBox(width: 56, height: 56, child: Icon(Icons.menu,color: Colors.orange,)),
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(100),
+                              border: Border.all(width: 3, color: Colors.orange)
+                          ),
+                        ),
+                        onTap: () {
+                          changeWidget();
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+                Visibility(
+                    maintainSize: true,
+                    maintainAnimation: true,
+                    maintainState: true,
+                    visible: viewVisible,
+                    child:
+                    Container(
+                      margin: EdgeInsets.fromLTRB(5.0, 0.0, 5.0, 0.0),
+                      decoration: BoxDecoration( color: Colors.white,borderRadius:BorderRadius.circular(10.0), border: Border.all(color: Colors.orange,width: 3.0) ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          RaisedButton(
+                            child: Container(
+                              child: Text("WHO"),
+                            ),
+                            color: whoColor,
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0), side: BorderSide(color: Colors.orange)),
+                            onPressed: () {
+                              who();// WHO
+                            },
+                          ),
+
+                          RaisedButton(
+                            child: Container(
+                              child: Text("MoHFW"),
+                            ),
+                            color: mohfwColor,
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0), side: BorderSide(color: Colors.orange)),
+                            onPressed: () {
+                              mohfw(); // MoFHW
+                            },
+                          ),
+                          RaisedButton(
+                            child: Container(
+                              child: Text("ICMR"),
+                            ),
+                            color: icmrColor,
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0), side: BorderSide(color: Colors.orange)),
+                            onPressed: () {
+                             icmr(); // ICMR
+                            },
+                          ),
+                          RaisedButton(
+                            child: Container(
+                              child: Text("PIB"),
+                            ),
+                            color: pibColor,
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0), side: BorderSide(color: Colors.orange)),
+                            onPressed: () {
+                              pib(); // PIB
+                            },
+                          ),
+                        ],
+                      ),
+                    )
+                ),
+              ],
             ),
           ],
         )
-
-
-  );
-
+    );
+  }
 }

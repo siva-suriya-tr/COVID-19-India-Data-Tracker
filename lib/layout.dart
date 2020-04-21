@@ -11,156 +11,165 @@ Widget buildLayout() {
   String day = formatday.format(prevday);
   String year = formatyear.format(prevday);
   String time = DateFormat.yMEd().add_jms().format(DateTime.now());
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.stretch,
-    mainAxisAlignment: MainAxisAlignment.center,
+  return new ListView(
     children: <Widget>[
-      Container(
-          decoration: BoxDecoration(color: Color(int.parse("0xff2CA2CA")),borderRadius:BorderRadius.all(Radius.circular(10))),
-          margin: EdgeInsets.fromLTRB(12.5, 15.0, 12.5, 0.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          SingleChildScrollView(child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                padding: EdgeInsets.fromLTRB(10.0, 20.0, 0.0, 20.0),
-                child: getFuture("https://www.mohfw.gov.in/index.html","#state-data > div > div > div > div > table > tbody > tr > td[align] > strong",45.0),
-              ),
-              Container(
-                decoration: BoxDecoration(color: Color(int.parse("0xff187B96")),borderRadius:BorderRadius.all(Radius.circular(10))),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    Container(
-                        margin:EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 10.0) ,
-                        child: Row(
+                  decoration: BoxDecoration(color: Color(int.parse("0xff2CA2CA")),borderRadius:BorderRadius.all(Radius.circular(10))),
+                  margin: EdgeInsets.fromLTRB(12.5, 15.0, 12.5, 0.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        padding: EdgeInsets.fromLTRB(10.0, 20.0, 0.0, 20.0),
+                        child: getFuture("https://www.mohfw.gov.in/index.html","#state-data > div > div > div > div > table > tbody > tr > td[align] > strong",45.0),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(color: Color(int.parse("0xff187B96")),borderRadius:BorderRadius.all(Radius.circular(10))),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: <Widget>[
-                            Text('TOTAL CASES    ',style: TextStyle(fontSize: 20.0,color: Colors.white,fontFamily: 'Roboto',fontWeight: FontWeight.bold),),//total cases
-                            Spacer(),
-                            Image.asset(
-                              'images/up.png',
-                              fit: BoxFit.contain,
-                              height: 24,
-                            ),
-                            Text(" "),
                             Container(
-                              margin: EdgeInsets.fromLTRB(0.0, 0.0, 7.0, 0.0),
-                              child: getFuture("https://www.worldometers.info/coronavirus/country/india/","#newsdate$year-$month-$day > div > div > ul > li > strong",20.0),
+                                margin:EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 10.0) ,
+                                child: Row(
+                                  children: <Widget>[
+                                    Text('TOTAL CASES    ',style: TextStyle(fontSize: 20.0,color: Colors.white,fontFamily: 'Roboto',fontWeight: FontWeight.bold),),//total cases
+                                    Spacer(),
+                                    Image.asset(
+                                      'images/up.png',
+                                      fit: BoxFit.contain,
+                                      height: 24,
+                                    ),
+                                    Text(" "),
+                                    Container(
+                                      margin: EdgeInsets.fromLTRB(0.0, 0.0, 7.0, 0.0),
+                                      child: getFuture("https://www.worldometers.info/coronavirus/country/india/","#newsdate$year-$month-$day > div > div > ul > li > strong",20.0),
+                                    ),
+                                  ],
+                                )
                             ),
                           ],
+                        ),
+                      ),
+                    ],
+                  )
+              ),
+              Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Expanded(
+                        flex: 1,
+                        child: Container(
+                          decoration: BoxDecoration(color: Color(int.parse("0xff00AD28")),borderRadius:BorderRadius.all(Radius.circular(10))),
+                          margin: EdgeInsets.fromLTRB(12.5, 6.5, 4, 6.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Container(
+                                padding: EdgeInsets.fromLTRB(10.0, 20.0, 0.0, 20.0),
+                                child: getFuture("https://www.mohfw.gov.in/index.html","#site-dashboard > div > div > div > div > ul > li.bg-green > strong",45.0),//recovered
+                              ),
+                              Container(
+                                decoration: BoxDecoration(color: Color(int.parse("0xff009D00")),borderRadius:BorderRadius.all(Radius.circular(10))),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                                  children: <Widget>[
+                                    Container(
+                                      child: Text('RECOVERED',style: TextStyle(fontSize: 20.0,color: Colors.white,fontFamily: 'Roboto',fontWeight: FontWeight.bold),),
+                                      margin:EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 10.0), //total cases
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         )
                     ),
+                    Expanded(
+                        flex: 1,
+                        child: Container(
+                          decoration: BoxDecoration(color: Color(int.parse("0xffC81F17")),borderRadius:BorderRadius.all(Radius.circular(10))),
+                          margin: EdgeInsets.fromLTRB(2.5, 6.5, 12.5, 6.5),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Container(
+                                padding: EdgeInsets.fromLTRB(10.0, 20.0, 0.0, 20.0),
+                                child: getFuture("https://www.mohfw.gov.in/index.html","#site-dashboard > div > div > div > div > ul > li.bg-red > strong",45.0),//deceased
+                              ),
+                              Container(
+                                decoration: BoxDecoration(color: Color(int.parse("0xffAD0000")),borderRadius:BorderRadius.all(Radius.circular(10))),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                                  children: <Widget>[
+                                    Container(
+                                      child: Text('DECEASED',style: TextStyle(fontSize: 20.0,color: Colors.white,fontFamily: 'Roboto',fontWeight: FontWeight.bold),),
+                                      margin:EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 10.0), //total cases
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                    )
                   ],
                 ),
               ),
-            ],
-          )
-      ),
-      Container(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Expanded(
-                flex: 1,
-                child: Container(
-                  decoration: BoxDecoration(color: Color(int.parse("0xff00AD28")),borderRadius:BorderRadius.all(Radius.circular(10))),
-                  margin: EdgeInsets.fromLTRB(12.5, 6.5, 4, 6.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                        padding: EdgeInsets.fromLTRB(10.0, 20.0, 0.0, 20.0),
-                        child: getFuture("https://www.mohfw.gov.in/index.html","#site-dashboard > div > div > div > div > ul > li.bg-green > strong",45.0),//recovered
-                      ),
-                      Container(
-                        decoration: BoxDecoration(color: Color(int.parse("0xff009D00")),borderRadius:BorderRadius.all(Radius.circular(10))),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: <Widget>[
-                            Container(
-                              child: Text('RECOVERED',style: TextStyle(fontSize: 20.0,color: Colors.white,fontFamily: 'Roboto',fontWeight: FontWeight.bold),),
-                              margin:EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 10.0), //total cases
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-            ),
-            Expanded(
-                flex: 1,
-                child: Container(
-                  decoration: BoxDecoration(color: Color(int.parse("0xffC81F17")),borderRadius:BorderRadius.all(Radius.circular(10))),
-                  margin: EdgeInsets.fromLTRB(2.5, 6.5, 12.5, 6.5),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                        padding: EdgeInsets.fromLTRB(10.0, 20.0, 0.0, 20.0),
-                        child: getFuture("https://www.mohfw.gov.in/index.html","#site-dashboard > div > div > div > div > ul > li.bg-red > strong",45.0),//deceased
-                      ),
-                      Container(
-                        decoration: BoxDecoration(color: Color(int.parse("0xffAD0000")),borderRadius:BorderRadius.all(Radius.circular(10))),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: <Widget>[
-                            Container(
-                              child: Text('DECEASED',style: TextStyle(fontSize: 20.0,color: Colors.white,fontFamily: 'Roboto',fontWeight: FontWeight.bold),),
-                              margin:EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 10.0), //total cases
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-            )
-          ],
-        ),
-      ),
-      Container(
-          decoration: BoxDecoration(color: Color(int.parse("0xffE6AE0E")),borderRadius:BorderRadius.all(Radius.circular(10))),
-          margin: EdgeInsets.fromLTRB(12.5, 0.0, 12.5, 10.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
               Container(
-                padding: EdgeInsets.fromLTRB(10.0, 20.0, 0.0, 20.0),
-                child: getFuture("https://www.mohfw.gov.in/index.html","#site-dashboard > div > div > div > div > ul > li.bg-blue > strong",45.0),//activecases
+                  decoration: BoxDecoration(color: Color(int.parse("0xffE6AE0E")),borderRadius:BorderRadius.all(Radius.circular(10))),
+                  margin: EdgeInsets.fromLTRB(12.5, 0.0, 12.5, 10.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        padding: EdgeInsets.fromLTRB(10.0, 20.0, 0.0, 20.0),
+                        child: getFuture("https://www.mohfw.gov.in/index.html","#site-dashboard > div > div > div > div > ul > li.bg-blue > strong",45.0),//activecases
+                      ),
+                      Container(
+                        decoration: BoxDecoration(color: Color(int.parse("0xffAD7300")),borderRadius:BorderRadius.all(Radius.circular(10))),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: <Widget>[
+                            Container(
+                              margin:EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 10.0) ,
+                              child: Text('ACTIVE CASES',style: TextStyle(fontSize: 20.0,color: Colors.white,fontFamily: 'Roboto',fontWeight: FontWeight.bold),),
+                              //total cases
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  )
               ),
-              Container(
-                decoration: BoxDecoration(color: Color(int.parse("0xffAD7300")),borderRadius:BorderRadius.all(Radius.circular(10))),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    Container(
-                      margin:EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 10.0) ,
-                      child: Text('ACTIVE CASES',style: TextStyle(fontSize: 20.0,color: Colors.white,fontFamily: 'Roboto',fontWeight: FontWeight.bold),),
-                      //total cases
+              Column(
+                children: <Widget>[
+                  Container(
+                    child: Center(
+                      child: Text("Last Updated: $time"),
                     ),
-                  ],
-                ),
-              ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top:10.0),
+                    child: Center(
+                      child: Text("The new cases counter displays the increase in number of recorded cases observed on $day/$month/$year alone",textAlign: TextAlign.center,),
+                    ),
+                  ),
+                ],
+              )
             ],
-          )
-      ),
-      Column(
-        children: <Widget>[
-          Container(
-            child: Center(
-              child: Text("Last Updated: $time"),
-            ),
           ),
-          Container(
-            margin: EdgeInsets.only(top:10.0),
-            child: Center(
-              child: Text("The new cases counter displays the increase in number of recorded cases observed on $day/$month/$year alone",textAlign: TextAlign.center,),
-            ),
           ),
-
         ],
-      )
+      ),
     ],
   );
 }
