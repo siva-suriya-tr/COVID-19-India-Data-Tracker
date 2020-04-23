@@ -8,7 +8,7 @@ class ViewWidget extends StatefulWidget {
 class ViewWidgetState extends State {
 
   bool viewVisible = false;
-  Color whoColor = Colors.orange;
+  Color whoColor = Colors.blue;
   Color mohfwColor = Colors.white;
   Color icmrColor = Colors.white;
   Color pibColor = Colors.white;
@@ -20,7 +20,7 @@ class ViewWidgetState extends State {
   void who (){
     _controller.loadUrl("https://twitter.com/WHO");
     setState(() {
-      whoColor = Colors.orange;
+      whoColor = Colors.blue;
       mohfwColor = Colors.white;
       icmrColor = Colors.white;
       pibColor = Colors.white;
@@ -32,7 +32,7 @@ class ViewWidgetState extends State {
     _controller.loadUrl("https://twitter.com/MoHFW_INDIA");
     setState(() {
       whoColor = Colors.white;
-      mohfwColor = Colors.orange;
+      mohfwColor = Colors.blue;
       icmrColor = Colors.white;
       pibColor = Colors.white;
       viewVisible = !viewVisible;
@@ -43,7 +43,7 @@ class ViewWidgetState extends State {
     setState(() {
       whoColor = Colors.white;
       mohfwColor = Colors.white;
-      icmrColor = Colors.orange;
+      icmrColor = Colors.blue;
       pibColor = Colors.white;
       viewVisible = !viewVisible;
     });
@@ -54,7 +54,7 @@ class ViewWidgetState extends State {
       whoColor = Colors.white;
       mohfwColor = Colors.white;
       icmrColor = Colors.white;
-      pibColor = Colors.orange;
+      pibColor = Colors.blue;
       viewVisible = !viewVisible;
     });
   }
@@ -71,7 +71,7 @@ class ViewWidgetState extends State {
     MediaQueryData queryData;
     queryData = MediaQuery.of(context);
     double width = queryData.size.width;
-    double height = queryData.size.height;
+    //double height = queryData.size.height;
 
     //final Completer<WebViewController> _controller = Completer<WebViewController>();
     //WebViewController _controller;
@@ -101,16 +101,16 @@ class ViewWidgetState extends State {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.fromLTRB(0.0, 10.0, 10.0, 10.0),
+                  margin: EdgeInsets.fromLTRB(0.0, 10.0, 10.0, 0.0),
                   child: ClipOval(
                     child: Material(
                       color: Colors.white, // button color
                       child: InkWell(
                         splashColor: Colors.black, // inkwell color
                         child: Container(
-                          child: SizedBox(width: 56, height: 56, child: Icon(Icons.menu,color: Colors.orange,)),
+                          child: SizedBox(width: 40, height: 40, child: Icon(Icons.menu,color: Colors.blue,)),
                           decoration: BoxDecoration(borderRadius: BorderRadius.circular(100),
-                              border: Border.all(width: 3, color: Colors.orange)
+                              border: Border.all(width: 3, color: Colors.blue)
                           ),
                         ),
                         onTap: () {
@@ -128,7 +128,7 @@ class ViewWidgetState extends State {
                     child:
                     Container(
                       margin: EdgeInsets.fromLTRB(5.0, 0.0, 5.0, 0.0),
-                      decoration: BoxDecoration( color: Colors.white,borderRadius:BorderRadius.circular(10.0), border: Border.all(color: Colors.orange,width: 3.0) ),
+                      decoration: BoxDecoration( color: Colors.white,borderRadius:BorderRadius.circular(10.0), border: Border.all(color: Colors.blue,width: 3.0) ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
@@ -137,7 +137,7 @@ class ViewWidgetState extends State {
                               child: Text("WHO"),
                             ),
                             color: whoColor,
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0), side: BorderSide(color: Colors.orange)),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0), side: BorderSide(color: Colors.blue)),
                             onPressed: () {
                               who();// WHO
                             },
@@ -148,7 +148,7 @@ class ViewWidgetState extends State {
                               child: Text("MoHFW"),
                             ),
                             color: mohfwColor,
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0), side: BorderSide(color: Colors.orange)),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0), side: BorderSide(color: Colors.blue)),
                             onPressed: () {
                               mohfw(); // MoFHW
                             },
@@ -158,7 +158,7 @@ class ViewWidgetState extends State {
                               child: Text("ICMR"),
                             ),
                             color: icmrColor,
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0), side: BorderSide(color: Colors.orange)),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0), side: BorderSide(color: Colors.blue)),
                             onPressed: () {
                              icmr(); // ICMR
                             },
@@ -168,7 +168,7 @@ class ViewWidgetState extends State {
                               child: Text("PIB"),
                             ),
                             color: pibColor,
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0), side: BorderSide(color: Colors.orange)),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0), side: BorderSide(color: Colors.blue)),
                             onPressed: () {
                               pib(); // PIB
                             },

@@ -7,6 +7,7 @@ Future<String> getCount(String uri, String path) async {
   await for (dom.Element element in tagStream(document,'strong',path)){
     return element.text;
   }
+  return "Placeholder";
 }
 Stream tagStream(dom.Document document, String tag,String path) async*{
   List elements = document.querySelectorAll(path);

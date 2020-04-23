@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'layout.dart';
 import 'twitter.dart';
-import 'dail.dart';
+import 'dial.dart';
 import 'package:circular_bottom_navigation/tab_item.dart';
 import 'package:circular_bottom_navigation/circular_bottom_navigation.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
 void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
@@ -17,8 +18,8 @@ class MyApp extends StatelessWidget {
       title: 'COVID-19 Tracker',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: createMaterialColor(Color(0xFF262626)),
-        fontFamily:'Roboto',
+        primarySwatch: createMaterialColor(Color(0xff000046)),
+        fontFamily:'Poppins',
       ),
       home: MyHomePage(title: 'COVID-19 Tracker'),
     );
@@ -32,12 +33,12 @@ class MyHomePage extends StatefulWidget {
 }
 class _MyHomePageState extends State<MyHomePage> {
   int selectedPos = 0;
-  double bottomNavBarHeight = 60;
+  double bottomNavBarHeight = 50;
   List<TabItem> tabItems = List.of([
-    new TabItem(Icons.home, "Home", Colors.blue, labelStyle: TextStyle(fontWeight: FontWeight.normal)),
-    new TabItem(MdiIcons.twitter, "Recent Tweets", Colors.orange, labelStyle: TextStyle(color: Colors.red, fontWeight: FontWeight.bold)),
-    new TabItem(Icons.library_books, "Reports", Colors.red),
+    new TabItem(Icons.home, "Statistics", Colors.blue, labelStyle: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
+    new TabItem(Icons.contacts, "Helplines", Colors.blue, labelStyle: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
     new TabItem(Icons.notifications, "Notifications", Colors.cyan),
+    new TabItem(MdiIcons.twitter, "Recent Tweets", Color(0xff0098CC), labelStyle: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
   ]);
   CircularBottomNavigationController _navigationController;
   @override
@@ -69,8 +70,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    FlutterStatusbarcolor.setStatusBarColor(Color(int.parse("0xff000046")));
     return new WillPopScope(child: Scaffold(
-        backgroundColor: Color(int.parse("0xffFFFFFF")),
         appBar: AppBar(
             title: Row(
               children: <Widget>[
@@ -104,7 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
       return buildLayout();
       break;
       case 1:
-        return ViewWidget();
+        return DialWidget();
         break;
       case 2:
         return DialWidget();
@@ -112,19 +113,21 @@ class _MyHomePageState extends State<MyHomePage> {
       case 3:
         return ViewWidget();
         break;
+      default: return Text("Placeholder");
     }
   }
   Widget bottomNav() {
     return CircularBottomNavigation(
       tabItems,
       controller: _navigationController,
-      barHeight: bottomNavBarHeight,
+      barHeight: 50.0,
+      iconsSize: 30.0,
       barBackgroundColor: Colors.white,
       animationDuration: Duration(milliseconds: 300),
       selectedCallback: (int selectedPos) {
         setState(() {
           this.selectedPos = selectedPos;
-          //print(_navigationController.value);
+          //print(_navigationController.value);\
         });
       },
     );
