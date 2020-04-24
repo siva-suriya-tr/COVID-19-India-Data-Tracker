@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-
+import 'package:auto_size_text/auto_size_text.dart';
 class ViewWidget extends StatefulWidget {
   @override
   ViewWidgetState createState() => ViewWidgetState();
@@ -8,8 +8,8 @@ class ViewWidget extends StatefulWidget {
 class ViewWidgetState extends State {
 
   bool viewVisible = false;
-  Color whoColor = Colors.blue;
-  Color mohfwColor = Colors.white;
+  Color whoColor = Colors.white;
+  Color mohfwColor = Colors.blue;
   Color icmrColor = Colors.white;
   Color pibColor = Colors.white;
   void changeWidget() {
@@ -59,6 +59,8 @@ class ViewWidgetState extends State {
     });
   }
 
+
+
   WebViewController _controller;
 
   @override
@@ -81,7 +83,7 @@ class ViewWidgetState extends State {
         child: Stack(
           children: <Widget>[
             WebView(
-              initialUrl: "https://twitter.com/WHO",
+              initialUrl: "https://twitter.com/MoHFW_INDIA",
               javascriptMode: JavascriptMode.unrestricted,
               onWebViewCreated: (WebViewController webViewController){
                 //_controller.complete(webViewController);
@@ -104,13 +106,13 @@ class ViewWidgetState extends State {
                   margin: EdgeInsets.fromLTRB(0.0, 10.0, 10.0, 0.0),
                   child: ClipOval(
                     child: Material(
-                      color: Colors.white, // button color
+                      color: Colors.blue, // button color
                       child: InkWell(
                         splashColor: Colors.black, // inkwell color
                         child: Container(
-                          child: SizedBox(width: 40, height: 40, child: Icon(Icons.menu,color: Colors.blue,)),
+                          child: SizedBox(width: 40, height: 40, child: Icon(Icons.menu,color: Colors.white,)),
                           decoration: BoxDecoration(borderRadius: BorderRadius.circular(100),
-                              border: Border.all(width: 3, color: Colors.blue)
+                              border: Border.all(width: 3, color: Colors.white)
                           ),
                         ),
                         onTap: () {
@@ -132,12 +134,23 @@ class ViewWidgetState extends State {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
+
                           RaisedButton(
                             child: Container(
-                              child: Text("WHO"),
+                              child: AutoSizeText("MoHFW"),
+                            ),
+                            color: mohfwColor,
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0), side: BorderSide(color: Colors.white)),
+                            onPressed: () {
+                              mohfw(); // MoFHW
+                            },
+                          ),
+                          RaisedButton(
+                            child: Container(
+                              child: AutoSizeText("WHO"),
                             ),
                             color: whoColor,
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0), side: BorderSide(color: Colors.blue)),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0), side: BorderSide(color: Colors.white)),
                             onPressed: () {
                               who();// WHO
                             },
@@ -145,30 +158,20 @@ class ViewWidgetState extends State {
 
                           RaisedButton(
                             child: Container(
-                              child: Text("MoHFW"),
-                            ),
-                            color: mohfwColor,
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0), side: BorderSide(color: Colors.blue)),
-                            onPressed: () {
-                              mohfw(); // MoFHW
-                            },
-                          ),
-                          RaisedButton(
-                            child: Container(
-                              child: Text("ICMR"),
+                              child: AutoSizeText("ICMR"),
                             ),
                             color: icmrColor,
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0), side: BorderSide(color: Colors.blue)),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0), side: BorderSide(color: Colors.white)),
                             onPressed: () {
                              icmr(); // ICMR
                             },
                           ),
                           RaisedButton(
                             child: Container(
-                              child: Text("PIB"),
+                              child: AutoSizeText("PIB"),
                             ),
                             color: pibColor,
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0), side: BorderSide(color: Colors.blue)),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0), side: BorderSide(color: Colors.white)),
                             onPressed: () {
                               pib(); // PIB
                             },

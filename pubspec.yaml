@@ -33,6 +33,7 @@ dependencies:
   webview_flutter: ^0.3.20
   flutter_statusbarcolor: ^0.2.3
   google_fonts: ^1.0.0
+  auto_size_text: ^2.1.0
 
 
 dev_dependencies:

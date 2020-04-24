@@ -1,6 +1,7 @@
 import 'package:corona_tracker/initiate_count.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 Widget loadCounter(String uri,String path,double fontsize, String text, Color colorNeeded) {
   return Column(
     children: <Widget>[
@@ -26,7 +27,7 @@ Widget loadCounter(String uri,String path,double fontsize, String text, Color co
       SizedBox(height: 10),
       getFuture(uri,path,fontsize,colorNeeded),
       Center(
-        child: Text(text,style: GoogleFonts.poppins(fontSize: 12.0,color: Colors.grey,fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
+        child: AutoSizeText(text,style: GoogleFonts.poppins(fontSize: 12.0,color: Colors.grey,fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
       ),
     ],
   );

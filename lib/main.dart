@@ -1,3 +1,5 @@
+import 'package:corona_tracker/donatePage.dart';
+import 'package:corona_tracker/symptomsPage.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'layout.dart';
@@ -7,7 +9,8 @@ import 'package:circular_bottom_navigation/tab_item.dart';
 import 'package:circular_bottom_navigation/circular_bottom_navigation.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
-
+import 'TestSite.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -35,10 +38,12 @@ class _MyHomePageState extends State<MyHomePage> {
   int selectedPos = 0;
   double bottomNavBarHeight = 50;
   List<TabItem> tabItems = List.of([
-    new TabItem(Icons.home, "Statistics", Colors.blue, labelStyle: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
+    new TabItem(Icons.home, "Home", Colors.blue, labelStyle: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
+    new TabItem(MdiIcons.alertDecagram, "Tips", Colors.blue, labelStyle: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
+    new TabItem(MdiIcons.hospitalBuilding, "Test Sites", Colors.blue, labelStyle: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
     new TabItem(Icons.contacts, "Helplines", Colors.blue, labelStyle: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
-    new TabItem(Icons.notifications, "Notifications", Colors.cyan),
-    new TabItem(MdiIcons.twitter, "Recent Tweets", Color(0xff0098CC), labelStyle: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
+    new TabItem(MdiIcons.water, "Donations", Colors.blue, labelStyle: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
+    new TabItem(MdiIcons.twitter, "Tweets", Colors.blue, labelStyle: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
   ]);
   CircularBottomNavigationController _navigationController;
   @override
@@ -51,16 +56,16 @@ class _MyHomePageState extends State<MyHomePage> {
     return showDialog(
       context: context,
       builder: (context) => new AlertDialog(
-        title: new Text('Are you sure?'),
-        content: new Text('Do you want to exit?'),
+        title: new AutoSizeText('Are you sure?'),
+        content: new AutoSizeText('Do you want to exit?'),
         actions: <Widget>[
           new FlatButton(
             onPressed: () => Navigator.of(context).pop(false),
-            child: new Text('No'),
+            child: new AutoSizeText('No'),
           ),
           new FlatButton(
             onPressed: () => Navigator.of(context).pop(true),
-            child: new Text('Yes'),
+            child: new AutoSizeText('Yes'),
           ),
         ],
       ),
@@ -80,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   fit: BoxFit.contain,
                   height: 32,
                 ),
-                Text("  COVID-19 Tracker and Helpkit",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0,color: Colors.white),),
+                AutoSizeText("  COVID-19 Tracker and Helpkit",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0,color: Colors.white),),
               ],
             )
         ),
@@ -102,18 +107,18 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget bodyContainer() {
     switch (selectedPos) {
       case 0:
-      return buildLayout();
-      break;
+      return buildLayout();break;
       case 1:
-        return DialWidget();
-        break;
+        return SymptomWidget();break;
       case 2:
-        return DialWidget();
-        break;
+        return TestWidget();break;
       case 3:
-        return ViewWidget();
-        break;
-      default: return Text("Placeholder");
+        return DialWidget();break;
+      case 4:
+        return DonateWidget();break;
+      case 5:
+        return ViewWidget();break;
+      default: return AutoSizeText("Placeholder");
     }
   }
   Widget bottomNav() {
@@ -121,7 +126,9 @@ class _MyHomePageState extends State<MyHomePage> {
       tabItems,
       controller: _navigationController,
       barHeight: 50.0,
-      iconsSize: 30.0,
+      iconsSize: 23.0,
+      circleStrokeWidth: 2.0,
+      circleSize: 40.0,
       barBackgroundColor: Colors.white,
       animationDuration: Duration(milliseconds: 300),
       selectedCallback: (int selectedPos) {

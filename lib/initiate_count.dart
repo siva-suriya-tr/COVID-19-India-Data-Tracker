@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'count.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 Widget getFuture(String uri,String path,double fontsize,Color colorNeeded) {
   return FutureBuilder<String>(
       future:getCount(uri,path) ,
@@ -17,7 +18,7 @@ Widget getFuture(String uri,String path,double fontsize,Color colorNeeded) {
           double fontSize = fontsize;
           String lol = text.data;
           return Center(
-            child: Text("$lol  ", style: GoogleFonts.poppins(fontSize: fontSize,color: colorNeeded,fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
+            child: AutoSizeText("$lol  ", style: GoogleFonts.poppins(fontSize: fontSize,color: colorNeeded,fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
           );
         }
       });

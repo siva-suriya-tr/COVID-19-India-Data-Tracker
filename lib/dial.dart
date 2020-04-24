@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'NumberCard.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 class DialWidget extends StatefulWidget {
 
   @override
@@ -52,13 +53,13 @@ class DialWidgetState extends State {
                   ),
                   Positioned(
                     top: 70.0,
-                    left: 20.0,
-                    child: Text("Help them,\nHelp us. ",textAlign: TextAlign.right,
+                    left: 30.0,
+                    child: AutoSizeText("Help them,\nhelp us. ",textAlign: TextAlign.right,
                         style: GoogleFonts.poppins(
                             textStyle: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 35.0,
+                                fontSize: 30.0,
                                 height: 1.2))),
                   ),
                   //Container(), // I dont know why it can't work without container
@@ -70,7 +71,7 @@ class DialWidgetState extends State {
       ),
     ),
             SizedBox(height: 10.0,),
-            getNumberCard("All India COVID-19 Helpline","+91-11-23978046"),
+            getNumberCard("All India COVID-19 Helpline","+91-11-23978046","images/customer-service-agent.png"),
             SizedBox(height: 10.0,),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 10),
@@ -139,7 +140,7 @@ class DialWidgetState extends State {
                       ].map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
-                          child: Text(value),
+                          child: AutoSizeText(value),
                         );
                       }).toList(),
                       onChanged: (value) {
@@ -155,7 +156,7 @@ class DialWidgetState extends State {
                   SizedBox(width: 10),
                   Container(
                     //padding: EdgeInsets.only(top:5.0),
-                    child: Text("India",
+                    child: AutoSizeText("India",
                         style: GoogleFonts.poppins(
                             textStyle: TextStyle(
                               color: Colors.grey,
@@ -170,8 +171,8 @@ class DialWidgetState extends State {
             SizedBox(height: 10.0,),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 10),
-              padding: EdgeInsets.symmetric( horizontal: 20,vertical: 10),
-              height: 95,
+              padding: EdgeInsets.symmetric( horizontal: 10,vertical: 10),
+              height: 205,
               width: double.infinity,
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -184,19 +185,56 @@ class DialWidgetState extends State {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  Text('State Specific COVID-19 Helpline ',style: GoogleFonts.poppins(
-                      textStyle: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                          height: 1.0
-                      ))),
-
+                  Container(
+                    height: 130,
+                    child: Stack(
+                      children: <Widget>[
+                        Container(
+                          height: 130,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                                begin: Alignment.centerLeft,
+                                end: Alignment.centerRight,
+                                colors: [
+                                  Color(int.parse("0xff000046")),
+                                  Color(int.parse("0xff0098CC"))
+                                ]),
+                            borderRadius: BorderRadius.circular(10),
+                            image: DecorationImage(
+                                fit: BoxFit.fitWidth,
+                                image: AssetImage("images/virusspread.png")),
+                          ),
+                        ),
+                        Positioned(
+                          bottom: 0.0,
+                          right: 0.0,
+                          child: Image.asset("images/state.png",
+                              fit: BoxFit.fitHeight,
+                              width: 105,
+                              height: 100,
+                              alignment: Alignment.topCenter),
+                        ),
+                        Positioned(
+                          left: 10.0,
+                          bottom: 5.0,
+                          child: AutoSizeText("State COVID-19 Helpline",style: GoogleFonts.poppins(     //State Specific COVID-19 Helpline
+                              textStyle: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 17.0,
+                                  fontWeight: FontWeight.bold,
+                                  height: 1.0
+                              ))),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 5.0,),
                   Row(
                     children: <Widget>[
                       Container(
                         //padding: EdgeInsets.only(top:5.0),
-                        child: Text(callNumber,
+                        child: AutoSizeText(callNumber,
                             style: GoogleFonts.poppins(
                                 textStyle: TextStyle(
                                   color: Colors.grey,
@@ -208,7 +246,7 @@ class DialWidgetState extends State {
                       Spacer(),
                       RaisedButton(
                           color: Colors.blue,
-                          child: Text("Call",
+                          child: AutoSizeText("Call",
                               style: GoogleFonts.poppins(
                                   textStyle: TextStyle(
                                     color: Colors.white,
@@ -239,19 +277,19 @@ class DialWidgetState extends State {
               ),
             ),
             SizedBox(height: 10.0,),
-            getNumberCard("Police Services","100"),
+            getNumberCard("Police Services","100","images/policeman.png"),
             SizedBox(height: 10.0,),
-            getNumberCard("Fire Services","101"),
+            getNumberCard("Fire Services","101","images/firefighter.png"),
             SizedBox(height: 10.0,),
-            getNumberCard("Ambulance Services","102"),
+            getNumberCard("Ambulance Services","102","images/ambulance.png"),
             SizedBox(height: 10.0,),
-            getNumberCard("National Emergency Number","112"),
+            getNumberCard("National Emergency Number","112","images/emergency.png"),
             SizedBox(height: 10.0,),
-            getNumberCard("Women Helpline","1091"),
+            getNumberCard("Women Helpline","1091","images/woman.png"),
             SizedBox(height: 10.0,),
-            getNumberCard("Senior Citizen Helpline","1291"),
+            getNumberCard("Senior Citizen Helpline","1291","images/grandma.png"),
             SizedBox(height: 10.0,),
-            getNumberCard("Child Protection Services","1098"),
+            getNumberCard("Child Protection Services","1098","images/son.png"),
             SizedBox(height: 10.0,),
 
     ],
@@ -310,12 +348,12 @@ class DialWidgetState extends State {
         context: context,
         barrierDismissible: true,
         builder: (context) => new AlertDialog(
-          title: new Text('Awaiting Valid Selection'),
-          content: new Text('Select a State'),
+          title: new AutoSizeText('Awaiting Valid Selection'),
+          content: new AutoSizeText('Select a State'),
           actions: <Widget>[
             new FlatButton(
               onPressed: () => Navigator.of(context).pop(false),
-              child: new Text('OK'),
+              child: new AutoSizeText('OK'),
             ),
           ],
         ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'CounterRow.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 Widget buildLayout() {
   var now = new DateTime.now();
   var prevday = new DateTime(now.year, now.month, now.day - 1);
@@ -52,7 +53,7 @@ Widget buildLayout() {
                           Positioned(
                             top: 75.0,
                             right: 20.0,
-                            child: Text("Stay in.\nStay safe. ",
+                            child: AutoSizeText("Stay in.\nStay safe. ",
                                 style: GoogleFonts.poppins(
                                     textStyle: TextStyle(
                                         color: Colors.white,
@@ -88,7 +89,7 @@ Widget buildLayout() {
                   SizedBox(width: 10),
                   Container(
                     //padding: EdgeInsets.only(top:5.0),
-                    child: Text("India",
+                    child: AutoSizeText("India",
                         style: GoogleFonts.poppins(
                             textStyle: TextStyle(
                                 color: Colors.grey,
