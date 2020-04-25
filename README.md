@@ -1,5 +1,9 @@
 # corona_tracker
 
+Splash Screen             |  Primary Tracker
+:-------------------------:|:-------------------------:
+![](Screenshots/Screenshot_2020-04-25-16-21-57-468_com.example.corona_tracker.jpg)  |  ![](Screenshots/Screenshot_2020-04-25-23-02-23-731_com.example.corona_tracker.jpg)
+
 The COVID-19 Tracker (INDIA) app is a toolkit for tracking the COVID-19 coronavirus pandemic in India. The app sources it's data from the official Indian Ministry of Health and Family Welfare.
 
 Most people who fall sick with COVID-19 will experience mild to moderate symptoms and recover without special treatment. The virus that causes COVID-19 is mainly transmitted through droplets generated when an infected person coughs, sneezes, or exhales. These droplets are too heavy to hang in the air, and quickly fall on floors or surfaces. You can be infected by breathing in the virus if you are within close proximity of someone who has COVID-19, or by touching a contaminated surface and then your eyes, nose or mouth.
