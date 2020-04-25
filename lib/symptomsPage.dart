@@ -1,15 +1,15 @@
-import 'package:corona_tracker/PreventionCard.dart';
-import 'package:corona_tracker/SymptomCard.dart';
+import 'widgets/PreventionCard.dart';
+import 'widgets/SymptomCard.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-class SymptomWidget extends StatefulWidget {
 
+class SymptomWidget extends StatefulWidget {
   @override
   SymptomWidgetState createState() => SymptomWidgetState();
 }
-class SymptomWidgetState extends State {
 
+class SymptomWidgetState extends State {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
@@ -20,7 +20,7 @@ class SymptomWidgetState extends State {
             clipper: Clip(),
             child: Container(
               width: double.infinity,
-              height:250,
+              height: 250,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                     begin: Alignment.topCenter,
@@ -49,8 +49,8 @@ class SymptomWidgetState extends State {
                         Positioned(
                           top: 65.0,
                           left: 15.0,
-                          child: AutoSizeText(
-                              "Keep track of\nyourself. ",
+                          child: AutoSizeText("Keep track of\nyourself. ",
+                              minFontSize: 5.0,
                               textAlign: TextAlign.right,
                               style: GoogleFonts.poppins(
                                   textStyle: TextStyle(
@@ -67,117 +67,121 @@ class SymptomWidgetState extends State {
             ),
           ),
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 10),
-            padding: EdgeInsets.symmetric( horizontal: 10.0,vertical: 10),
-            height: 900,
+            margin: EdgeInsets.symmetric(horizontal: 5),
+            padding: EdgeInsets.symmetric(horizontal: 5.0, vertical: 10),
+            height: 1010,
             width: double.infinity,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
               border: Border.all(
-                color: Color(0xFFE5E5E5),   //0xFFE5E5E5
+                color: Color(0xFFE5E5E5), //0xFFE5E5E5
               ),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                    AutoSizeText("Common Symptoms",
-                        style: GoogleFonts.poppins(
-                            textStyle: TextStyle(
-                              color: Colors.blue,
-                              fontSize: 30.0,
-                              fontWeight: FontWeight.bold,
-                              //height: 1.0
-                            ))),
-                SizedBox(height: 10.0,),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 10),
-                  padding: EdgeInsets.symmetric( horizontal: 10,vertical: 10),
-                  height: 122,
-                  width: double.maxFinite,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                      color: Color(0xFFE5E5E5),   //0xFFE5E5E5
-                       ),
-                  ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      getSymptom("Fever","images/fever.png"),
-                      Spacer(),
-                      getSymptom("Fatigue","images/pain.png"),
-                      Spacer(),
-                      getSymptom("Cough","images/cough.png"),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 5.0,),
-
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 10),
-                  padding: EdgeInsets.symmetric( horizontal: 20,vertical: 10),
-                  height: 122,
-                  width: double.maxFinite,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                      color: Color(0xFFE5E5E5),   //0xFFE5E5E5
-                    ),
-                  ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Spacer(),
-                      getSymptom("Body Ache","images/pain1.png"),
-                      SizedBox(width:10.0),
-                      getSymptom("Runny Nose","images/runnynose.png"),
-                      Spacer(),
-                    ],
-                  ),
-                ),
-                AutoSizeText("Preventive Measures",
+                AutoSizeText("Common Symptoms",
+                    minFontSize: 5.0,
+                    maxLines: 1,
                     style: GoogleFonts.poppins(
                         textStyle: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 30.0,
-                          fontWeight: FontWeight.bold,
-                          //height: 1.0
-                        ))),
-                SizedBox(height: 10.0,),
-                getPreventionCard("Wash your hands ",
-                                  "Wash your hands with soap and water for at least 20 seconds especially after you "
-                                      "have been in a public place, or after coughing, or sneezing. If soap and "
-                                      "water are not readily available, use a hand sanitizer that contains alcohol. Avoid touching your eyes, nose, "
-                                      "and mouth.",
-                                  "images/handwash.png",true),
-                SizedBox(height: 10.0,),
-                getPreventionCard("Use Facemasks",
-                    "You could spread COVID-19 to others even if you do not feel sick. "
-                        "Everyone should wear a mask out in public."
-                        " The mask is meant to protect other people in case you are infected. "
-                        "Continue to stay about 6 feet from others. "
+                      color: Colors.blue,
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.bold,
+                      //height: 1.0
+                    ))),
+                SizedBox(
+                  height: 10.0,
+                ),
+                Container(
+                  //color: Colors.blue,
+                  width: double.infinity,
+                  height: 100,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Spacer(),
+                      getSymptom("Fever", "images/fever.png"),
+                      Spacer(),
+                      getSymptom("Fatigue", "images/pain.png"),
+                      Spacer(),
+                      getSymptom("Cough", "images/cough.png"),
+                      Spacer(),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 15.0,
+                ),
+                Container(
+                  //color: Colors.blue,
+                  width: double.infinity,
+                  height: 100,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Spacer(),
+                      getSymptom("Body Ache", "images/pain1.png"),
+                      SizedBox(
+                        width: 20.0,
+                      ),
+                      getSymptom("Runny Nose", "images/runnynose.png"),
+                      Spacer(),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 10.0,
+                ),
+                AutoSizeText("Preventive Measures",
+                    minFontSize: 5.0,
+                    maxLines: 1,
+                    style: GoogleFonts.poppins(
+                        textStyle: TextStyle(
+                      color: Colors.blue,
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.bold,
+                      //height: 1.0
+                    ))),
+                SizedBox(
+                  height: 10.0,
+                ),
+                getPreventionCard(
+                    "Wash your hands ",
+                    "Wash your hands with soap and water for at least 20 seconds especially after you "
+                        "have been in a public place, or after coughing, or sneezing. If soap and "
+                        "water are not readily available, use a hand sanitizer. Avoid touching your face.",
+                    "images/handwash.png"),
+                SizedBox(
+                  height: 10.0,
+                ),
+                getPreventionCard(
+                    "Use Facemasks",
+                    "You could spread COVID-19 to others even if you do not feel sick. Everyone should wear "
+                        "a mask out in public.The mask is meant to protect other people in case you are infected."
                         "The mask is not a substitute for social distancing.",
-                    "images/mask.png",false),
-                SizedBox(height: 10.0,),
-                getPreventionCard("Social Distancing",
-                    "Stay at least 6 feet from other people. "
-                        "Stay out of crowded places and avoid mass gatherings. "
-                        "Keeping space between"
-                        " you and others is one of the best tools we have to avoid being exposed to this v"
-                        "irus and slowing its spread locally and across the country and world.",
-                    "images/stayhome.png",true),
-                SizedBox(height: 10.0,),
-                getPreventionCard("Clean and Disinfect",
-                    "Clean AND disinfect frequently touched surfaces daily. "
-                        "This includes tables, doorknobs, light switches, countertops, "
-                        "handles, desks, phones, keyboards, toilets, faucets, and sinks. "
-                        "If surfaces are dirty, clean them. Use detergent or soap and water prior to disinfection.",
-                    "images/clean.png",false),
+                    "images/mask.png"),
+                SizedBox(
+                  height: 10.0,
+                ),
+                getPreventionCard(
+                    "Social Distancing",
+                    "Stay at least 6 feet from other people. Stay out of crowded places and mass gatherings. "
+                        "Keeping space between you and others is one of the best tools we have to avoid being "
+                        "exposed to the virus and slowing its spread across the country.",
+                    "images/stayhome.png"),
+                SizedBox(
+                  height: 10.0,
+                ),
+                getPreventionCard(
+                    "Clean and Disinfect",
+                    "Clean and disinfect frequently touched surfaces daily. This includes tables, "
+                        "doorknobs, light switches, handles, desks, phones, keyboards, toilets, faucets, and s"
+                        "inks. Use detergent or soap and water prior to disinfection.",
+                    "images/clean.png"),
               ],
             ),
           ),
@@ -196,13 +200,14 @@ class Clip extends CustomClipper<Path> {
 
     var firstControlPoint = Offset(size.width / 4, size.height - 65);
     var firstEndPoint = Offset(size.width / 2.25, size.height - 40);
-    path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy, firstEndPoint.dx, firstEndPoint.dy);
+    path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
+        firstEndPoint.dx, firstEndPoint.dy);
 
-    var secondControlPoint = Offset(size.width - (size.width / 3.25), size.height);
+    var secondControlPoint =
+        Offset(size.width - (size.width / 3.25), size.height);
     var secondEndPoint = Offset(size.width, size.height - 30.0);
-    path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy, secondEndPoint.dx, secondEndPoint.dy);
-
-
+    path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,
+        secondEndPoint.dx, secondEndPoint.dy);
 
     path.lineTo(size.width, size.height - 20);
 
@@ -210,6 +215,7 @@ class Clip extends CustomClipper<Path> {
     path.close();
     return path;
   }
+
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) {
     return false;
