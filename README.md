@@ -4,11 +4,11 @@ Splash Screen             |  Primary Tracker
 :-------------------------:|:-------------------------:
 ![](Screenshots/Screenshot_2020-04-25-16-21-57-468_com.example.corona_tracker.jpg)  |  ![](Screenshots/Screenshot_2020-04-25-23-02-23-731_com.example.corona_tracker.jpg)
 
-Test Site Details             |  Helpline Details
+Test Site Locations             |  Helpline Numbers
 :-------------------------:|:-------------------------:
 ![](Screenshots/Screenshot_2020-04-25-23-02-42-421_com.example.corona_tracker.jpg)  |  ![](Screenshots/Screenshot_2020-04-25-23-02-46-855_com.example.corona_tracker.jpg)
 
-Donate details            |  Symptoms Details
+Donation Links            |  Symptoms 
 :-------------------------:|:-------------------------:
 ![](Screenshots/Screenshot_2020-04-25-23-02-50-824_com.example.corona_tracker.jpg)  |  ![](Screenshots/Screenshot_2020-04-25-23-03-24-222_com.example.corona_tracker.jpg)
 
