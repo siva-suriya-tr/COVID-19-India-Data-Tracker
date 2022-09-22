@@ -10,7 +10,7 @@ Test Site Locations             |  Helpline Numbers
 
 Donation Links            |  Symptoms 
 :-------------------------:|:-------------------------:
-![](Screenshots/Screenshot_2020-04-25-23-02-50-824_com.example.corona_tracker.jpg)  |  ![](Screenshots/Screenshot_2020-04-25-23-03-24-222_com.example.corona_tracker.jpg)
+![](Screenshots/Screenshot_2020-04-25-23-02-50-824_com.example.corona_tracker.jpg)  |  ![](Screenshots/Screenshot_2020-04-25-23-03-24-222_com.example.corona_tracker.jpg) 
 
 The COVID-19 Tracker (INDIA) app is a toolkit for tracking the COVID-19 coronavirus pandemic in India. The app sources it's data from the official Indian Ministry of Health and Family Welfare.
 
